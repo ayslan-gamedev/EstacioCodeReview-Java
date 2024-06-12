@@ -23,7 +23,7 @@ public class PlayerController {
 	
 	@PostMapping
 	@Transactional
-	public void register(@RequestBody @Valid RegisterPlayer data) {
+	public void register(@RequestBody RegisterPlayer data) {
 		repository.save(new Player(null, data.name(), data.score()));
 	}
 	
