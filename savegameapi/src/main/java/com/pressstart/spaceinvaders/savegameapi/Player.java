@@ -8,26 +8,43 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "name")
-@Getter
-@Setter
-public class Player {
 
+public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false, unique = true)
-	@Setter(AccessLevel.NONE)
 	private Long id;
-
-	@Column(name = "Name", nullable = false)
 	private String name;
-	
-	@Column(name = "Score", nullable = false)
 	private int score;
 	
-	@Builder
-	public Player(String name, int score) {
-		super();
+	public Player(Long id, String name, int score) {
+		this.id = id;
+		this.setName(name);
+		this.setScore(score);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
 		this.name = name;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
 		this.score = score;
+	}
+	
+	public void updateData(PlayerUpdate update) {
+		if (update.name() != null) {
+			this.setScore(update.name());
+		}
+		
+		if (update.score() != 0) {
+			this.setScore(update.score());
+		}
 	}
 }
