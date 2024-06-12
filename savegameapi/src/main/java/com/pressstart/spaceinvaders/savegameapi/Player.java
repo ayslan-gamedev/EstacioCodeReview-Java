@@ -40,7 +40,7 @@ public class Player {
 	
 	public void updateData(PlayerUpdate update) {
 		if (update.name() != null) {
-			this.setScore(update.name());
+			this.setScore(update.score());
 		}
 		
 		if (update.score() != 0) {
